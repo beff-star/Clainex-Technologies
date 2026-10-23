@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://localhost/clainex/index.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/about.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/request.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/contact.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/cart.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/auth/login.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/auth/register.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/privacy.php</loc>
+  </url>
+  <url>
+    <loc>http://localhost/clainex/terms.php</loc>
+  </url>
+</urlset>
