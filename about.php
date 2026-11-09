@@ -1,5 +1,6 @@
 <?php
 $pageTitle = 'About Us';
+$showSearchNavigation = false;
 require_once __DIR__ . '/includes/header.php';
 ?>
 <section class="page-hero inner-page-hero">

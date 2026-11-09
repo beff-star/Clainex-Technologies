@@ -4,11 +4,11 @@
     <div class="container footer-grid">
         <div>
             <div class="brand footer-brand brand-logo">
-                <img src="<?= BASE_URL ?>/assets/images/logo.jpeg" alt="Clainex Technologies logo" />
-                <div>
-                    <strong>Clainex</strong>
+                <img src="<?= BASE_URL ?>/assets/images/logo-mark.jpeg" alt="Clainex logo emblem" />
+                <span class="brand-wordmark">
+                    <strong>Claine<span class="brand-accent-x">x</span></strong>
                     <small>Technologies</small>
-                </div>
+                </span>
             </div>
             <p>Turning ideas into digital solutions with secure, scalable technology services for ambitious businesses.</p>
         </div>
@@ -37,7 +37,7 @@
             <h4>Contact</h4>
             <ul>
                 <li><i class="fa fa-phone"></i> +254 014 2843509</li>
-                <li><i class="fa fa-envelope"></i> hello@clainextech.com</li>
+                <li><i class="fa fa-envelope"></i> info@clainextechnologies.co.ke</li>
                 <li><i class="fa fa-map-marker-alt"></i> Nairobi, Kenya</li>
             </ul>
         </div>

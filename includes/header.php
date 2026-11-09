@@ -5,6 +5,12 @@ require_once __DIR__ . '/functions.php';
 $flash = getFlash();
 $user = currentUser();
 $cartCount = count(getCartItems());
+$requestPath = parse_url($_SERVER['SCRIPT_NAME'] ?? '/index.php', PHP_URL_PATH) ?: '/index.php';
+$basePath = parse_url(BASE_URL, PHP_URL_PATH) ?: '';
+if ($basePath !== '' && strncmp($requestPath, $basePath, strlen($basePath)) === 0) {
+    $requestPath = substr($requestPath, strlen($basePath));
+}
+$canonicalUrl = rtrim(BASE_URL, '/') . '/' . ltrim($requestPath, '/');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,11 +23,12 @@ $cartCount = count(getCartItems());
     <meta property="og:title" content="Clainex Technologies | Turning Ideas Into Digital Solutions">
     <meta property="og:description" content="Reliable technology services for software, infrastructure, cybersecurity, AI, data analytics and cloud transformation.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= e($canonicalUrl) ?>">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="<?= BASE_URL ?>">
+    <link rel="canonical" href="<?= e($canonicalUrl) ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Michroma&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
     <title><?= isset($pageTitle) ? e($pageTitle) . ' | ' : '' ?><?= SITE_NAME ?></title>
@@ -30,11 +37,11 @@ $cartCount = count(getCartItems());
     <header class="site-header">
         <div class="container nav-wrapper">
             <a href="<?= BASE_URL ?>/index.php" class="brand brand-logo" aria-label="Clainex home page">
-                <img src="<?= BASE_URL ?>/assets/images/logo.jpeg" alt="Clainex Technologies logo" />
-                <div>
-                    <strong>Clainex</strong>
+                <img src="<?= BASE_URL ?>/assets/images/logo-mark.jpeg" alt="Clainex logo emblem" />
+                <span class="brand-wordmark">
+                    <strong>Claine<span class="brand-accent-x">x</span></strong>
                     <small>Technologies</small>
-                </div>
+                </span>
             </a>
 
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -45,17 +52,21 @@ $cartCount = count(getCartItems());
 
             <nav class="main-nav">
                 <a href="<?= BASE_URL ?>/index.php">Home</a>
-                <a href="<?= BASE_URL ?>/about.php">About</a>
                 <a href="<?= BASE_URL ?>/request.php">Services</a>
+                <a href="<?= BASE_URL ?>/about.php">About</a>
                 <a href="<?= BASE_URL ?>/contact.php">Contact</a>
-                <a href="<?= BASE_URL ?>/cart.php">Cart <span class="cart-badge"><?= $cartCount ?></span></a>
+                <?php if ($showCartNavigation ?? false): ?>
+                    <a href="<?= BASE_URL ?>/cart.php">Cart <span class="cart-badge"><?= $cartCount ?></span></a>
+                <?php endif; ?>
             </nav>
 
             <div class="nav-actions">
-                <div class="search-box">
-                    <i class="fa fa-search"></i>
-                    <input type="search" placeholder="Search services..." aria-label="Search services">
-                </div>
+                <?php if ($showSearchNavigation ?? true): ?>
+                    <div class="search-box">
+                        <i class="fa fa-search"></i>
+                        <input type="search" placeholder="Search services..." aria-label="Search services">
+                    </div>
+                <?php endif; ?>
 
                 <?php if ($user): ?>
                     <div class="user-menu">
@@ -66,8 +77,7 @@ $cartCount = count(getCartItems());
                         </div>
                     </div>
                 <?php else: ?>
-                    <a href="<?= BASE_URL ?>/auth/login.php" class="btn btn-outline">Login</a>
-                    <a href="<?= BASE_URL ?>/auth/register.php" class="btn btn-primary">Register</a>
+                    <a href="<?= BASE_URL ?>/request.php" class="btn btn-primary">Get a Quote</a>
                 <?php endif; ?>
             </div>
         </div>

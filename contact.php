@@ -1,5 +1,6 @@
 <?php
 $pageTitle = 'Contact';
+$showSearchNavigation = false;
 require_once __DIR__ . '/includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_submit'])) {
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_submit'])) {
         <div class="contact-card">
             <h3>Get in touch</h3>
             <div class="contact-item"><i class="fa fa-phone"></i><span>+254 014 2843509</span></div>
-            <div class="contact-item"><i class="fa fa-envelope"></i><span>hello@clainextech.com</span></div>
+            <div class="contact-item"><i class="fa fa-envelope"></i><span>info@clainextechnologies.co.ke</span></div>
             <div class="contact-item"><i class="fa fa-clock"></i><span>Business hours: 24/7</span></div>
             <div class="contact-item"><i class="fa fa-map-marker-alt"></i><span>Nairobi, Kenya</span></div>
 

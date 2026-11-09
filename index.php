@@ -1,5 +1,7 @@
 <?php
 $pageTitle = 'Home';
+$showCartNavigation = false;
+$showSearchNavigation = false;
 require_once __DIR__ . '/includes/header.php';
 
 $services = serviceCatalog();
@@ -22,14 +24,6 @@ $services = serviceCatalog();
         </div>
 
         <div class="hero-visual">
-            <div class="service-card floating-card">
-                <div class="card-top">
-                    <span>Business growth</span>
-                    <i class="fa fa-arrow-up-right-dots"></i>
-                </div>
-                <h3>+178%</h3>
-                <p>Efficiency gains after digital transformation</p>
-            </div>
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Team collaborating on digital strategy" />
         </div>
     </div>
@@ -54,7 +48,6 @@ $services = serviceCatalog();
                         <h3><?= e($service['name']) ?></h3>
                         <p><?= e($service['description']) ?></p>
                         <div class="service-meta">
-                            <strong>KSh <?= number_format($service['price'], 0) ?></strong>
                             <a href="<?= BASE_URL ?>/request.php?service=<?= (int) $service['id'] ?>" class="link-btn">Get quote</a>
                         </div>
                     </div>

@@ -14,18 +14,18 @@ if (!isAdmin()) {
     <title><?= e($pageTitle) ?> | Clainex Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Michroma&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body>
     <div class="admin-page">
         <aside class="admin-sidebar">
             <a href="<?= BASE_URL ?>/index.php" class="brand brand-logo">
-                <img src="<?= BASE_URL ?>/assets/images/logo.jpeg" alt="Clainex Technologies logo" />
-                <div>
-                    <strong>Clainex</strong>
-                    <small>Admin</small>
-                </div>
+                <img src="<?= BASE_URL ?>/assets/images/logo-mark.jpeg" alt="Clainex logo emblem" />
+                <span class="brand-wordmark">
+                    <strong>Claine<span class="brand-accent-x">x</span></strong>
+                    <small>Technologies</small>
+                </span>
             </a>
 
             <nav class="admin-menu">

@@ -1,23 +1,59 @@
 <?php
+$environment = getenv('APP_ENV');
+define('APP_ENV', $environment !== false && $environment !== '' ? $environment : 'development');
+
+ini_set('session.use_strict_mode', '1');
+ini_set('session.use_only_cookies', '1');
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'secure' => APP_ENV === 'production' || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
 session_start();
 date_default_timezone_set('Africa/Nairobi');
 
 // Website configuration
 const SITE_NAME = 'Clainex Technologies';
 const SITE_TAGLINE = 'Turning Ideas Into Digital Solutions';
-const BASE_URL = 'http://localhost/clainex';
+
+$siteUrl = getenv('SITE_URL');
+if ($siteUrl === false || $siteUrl === '') {
+    $siteUrl = APP_ENV === 'production'
+        ? 'https://clainextechnologies.co.ke'
+        : 'http://localhost/Clainex-Technologies';
+}
+define('BASE_URL', rtrim($siteUrl, '/'));
+
+function environmentValue(string $name, string $developmentDefault): string
+{
+    $value = getenv($name);
+
+    if ($value !== false) {
+        return $value;
+    }
+
+    return APP_ENV === 'production' ? '' : $developmentDefault;
+}
 
 // Database configuration
-const DB_HOST = 'localhost';
-const DB_NAME = 'clainex_db';
-const DB_USER = 'root';
-const DB_PASS = '';
+define('DB_HOST', environmentValue('DB_HOST', 'localhost'));
+define('DB_NAME', environmentValue('DB_NAME', 'clainex_db'));
+define('DB_USER', environmentValue('DB_USER', 'root'));
+define('DB_PASS', environmentValue('DB_PASS', ''));
+define('DB_PORT', getenv('DB_PORT') ?: '3306');
 
 function dbConnection(): ?PDO
 {
+    if (DB_HOST === '' || DB_NAME === '' || DB_USER === '' || (APP_ENV === 'production' && DB_PASS === '')) {
+        error_log('Database connection failed: required production database environment variables are missing.');
+        return null;
+    }
+
     try {
         $pdo = new PDO(
-            'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
+            'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=utf8mb4',
             DB_USER,
             DB_PASS,
             [
@@ -28,6 +64,7 @@ function dbConnection(): ?PDO
         );
         return $pdo;
     } catch (PDOException $e) {
+        error_log('Database connection failed: ' . $e->getMessage());
         return null;
     }
 }

@@ -22,15 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password_hash'])) {
+        session_regenerate_id(true);
         $_SESSION['user_id'] = (int) $user['id'];
         $_SESSION['user_name'] = $user['full_name'];
         $_SESSION['user_email'] = $user['email'];
         $_SESSION['user_role'] = $user['role'];
         $_SESSION['is_admin'] = $user['role'] === 'admin' ? 1 : 0;
-
-        if (!empty($_POST['remember_me'])) {
-            setcookie('clainex_remember_me', $user['email'], time() + 60 * 60 * 24 * 7, '/');
-        }
 
         flash('success', 'Welcome back, ' . $user['full_name'] . '!');
 
@@ -65,10 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
                 </label>
 
                 <div class="auth-row">
-                    <label class="checkbox-row">
-                        <input type="checkbox" name="remember_me" value="1">
-                        <span>Remember me</span>
-                    </label>
                     <a href="<?= BASE_URL ?>/auth/forgot-password.php">Forgot password?</a>
                 </div>
 

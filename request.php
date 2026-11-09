@@ -1,5 +1,6 @@
 <?php
 $pageTitle = 'Request Service';
+$showCartNavigation = true;
 require_once __DIR__ . '/includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
@@ -95,7 +96,6 @@ $categories = array_unique(array_map(fn($item) => $item['category'], $services))
                             <h3><?= e($service['name']) ?></h3>
                             <p><?= e($service['description']) ?></p>
                             <div class="service-meta">
-                                <strong>KSh <?= number_format($service['price'], 0) ?></strong>
                                 <form method="post" action="<?= BASE_URL ?>/request.php" class="inline-form">
                                     <input type="hidden" name="service_id" value="<?= (int) $service['id'] ?>">
                                     <input type="hidden" name="add_to_cart" value="1">

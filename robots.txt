@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /auth/
 
-Sitemap: http://localhost/clainex/sitemap.xml
+Sitemap: https://clainextechnologies.co.ke/sitemap.xml
