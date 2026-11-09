@@ -16,20 +16,20 @@
         <div>
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="<?= BASE_URL ?>/index.php">Home</a></li>
-                <li><a href="<?= BASE_URL ?>/about.php">About Us</a></li>
-                <li><a href="<?= BASE_URL ?>/request.php">Request Service</a></li>
-                <li><a href="<?= BASE_URL ?>/contact.php">Contact</a></li>
+                <li><a href="<?= BASE_URL ?>/">Home</a></li>
+                <li><a href="<?= BASE_URL ?>/about.html">About Us</a></li>
+                <li><a href="<?= BASE_URL ?>/services.html">Request Service</a></li>
+                <li><a href="<?= BASE_URL ?>/contact.html">Contact</a></li>
             </ul>
         </div>
 
         <div>
             <h4>Services</h4>
             <ul>
-                <li><a href="<?= BASE_URL ?>/request.php#software-solutions">Software Solutions</a></li>
-                <li><a href="<?= BASE_URL ?>/request.php#it-infrastructure">IT Infrastructure</a></li>
-                <li><a href="<?= BASE_URL ?>/request.php#cyber-security">Cyber Security</a></li>
-                <li><a href="<?= BASE_URL ?>/request.php#cloud">Cloud & Digital</a></li>
+                <li><a href="<?= BASE_URL ?>/services.html">Software Solutions</a></li>
+                <li><a href="<?= BASE_URL ?>/services.html">IT Infrastructure</a></li>
+                <li><a href="<?= BASE_URL ?>/services.html">Cyber Security</a></li>
+                <li><a href="<?= BASE_URL ?>/services.html">Cloud & Digital</a></li>
             </ul>
         </div>
 
@@ -47,8 +47,8 @@
         <div class="container footer-bottom-inner">
             <p>© <?= date('Y') ?> Clainex Technologies. All rights reserved.</p>
             <div class="footer-links">
-                <a href="<?= BASE_URL ?>/privacy.php">Privacy Policy</a>
-                <a href="<?= BASE_URL ?>/terms.php">Terms</a>
+                <a href="<?= BASE_URL ?>/privacy.html">Privacy Policy</a>
+                <a href="<?= BASE_URL ?>/terms.html">Terms</a>
             </div>
         </div>
     </div>

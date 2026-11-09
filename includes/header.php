@@ -51,10 +51,10 @@ $canonicalUrl = rtrim(BASE_URL, '/') . '/' . ltrim($requestPath, '/');
             </button>
 
             <nav class="main-nav">
-                <a href="<?= BASE_URL ?>/index.php">Home</a>
-                <a href="<?= BASE_URL ?>/request.php">Services</a>
-                <a href="<?= BASE_URL ?>/about.php">About</a>
-                <a href="<?= BASE_URL ?>/contact.php">Contact</a>
+                <a href="<?= BASE_URL ?>/">Home</a>
+                <a href="<?= BASE_URL ?>/services.html">Services</a>
+                <a href="<?= BASE_URL ?>/about.html">About</a>
+                <a href="<?= BASE_URL ?>/contact.html">Contact</a>
                 <?php if ($showCartNavigation ?? false): ?>
                     <a href="<?= BASE_URL ?>/cart.php">Cart <span class="cart-badge"><?= $cartCount ?></span></a>
                 <?php endif; ?>
